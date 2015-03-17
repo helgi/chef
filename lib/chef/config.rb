@@ -570,6 +570,11 @@ class Chef
       ENV
     end
 
+    def self.windows_home_path
+      Chef::Log.deprecation("Chef::Config.windows_homw_path is now deprecated.  Please file an issue at https://github.com/chef/chef/issues if you're using it.  Consider using Chef::Util::PathHelper.home instead.")
+      PathHelper.home
+    end
+
     # returns a platform specific path to the user home dir if set, otherwise default to current directory.
     default( :user_home ) { PathHelper.home || Dir.pwd }
 
